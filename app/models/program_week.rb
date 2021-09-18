@@ -1,0 +1,2 @@
+class ProgramWeek < ApplicationRecord
+end
