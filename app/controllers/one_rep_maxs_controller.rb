@@ -1,0 +1,2 @@
+class OneRepMaxsController < ApplicationController
+end
