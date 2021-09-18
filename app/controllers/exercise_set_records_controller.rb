@@ -1,0 +1,2 @@
+class ExerciseSetRecordsController < ApplicationController
+end
