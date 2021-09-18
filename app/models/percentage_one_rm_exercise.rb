@@ -1,0 +1,2 @@
+class PercentageOneRmExercise < ApplicationRecord
+end
