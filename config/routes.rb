@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :rpe_exercises
   resources :percentage_one_rm_exercises
   resources :exercise_records, only: [:create, :new, :edit, :update]
+  resources :exercise_set_records, only: [:create, :new, :edit, :update]
 end
