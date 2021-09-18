@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :programs do
-    resources :program_weeks
-  end
+  resources :programs
+  resources :program_weeks
+  resources :workouts
 end
