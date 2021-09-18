@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :programs
   resources :program_weeks
   resources :workouts
+  resources :rpe_exercises
 end

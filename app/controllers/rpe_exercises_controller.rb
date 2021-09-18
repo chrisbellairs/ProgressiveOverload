@@ -1,0 +1,2 @@
+class RpeExercisesController < ApplicationController
+end
