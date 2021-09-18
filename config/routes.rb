@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :program_weeks
   resources :workouts
   resources :rpe_exercises
+  resources :percentage_one_rm_exercises
 end

@@ -1,0 +1,2 @@
+class PercentageOneRmExercisesController < ApplicationController
+end

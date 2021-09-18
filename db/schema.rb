@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_18_154238) do
+ActiveRecord::Schema.define(version: 2021_09_18_154827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "percentage_one_rm_exercises", force: :cascade do |t|
+    t.string "name"
+    t.integer "sets"
+    t.integer "reps"
+    t.integer "rest_period"
+    t.integer "percentage_one_rm"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "program_weeks", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
