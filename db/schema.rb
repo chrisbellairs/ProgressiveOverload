@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_02_092722) do
+ActiveRecord::Schema.define(version: 2021_10_02_093706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 2021_10_02_092722) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.bigint "percentage_one_rm_exercise_id", null: false
+    t.bigint "rpe_exercise_id", null: false
+    t.index ["percentage_one_rm_exercise_id"], name: "index_exercise_records_on_percentage_one_rm_exercise_id"
+    t.index ["rpe_exercise_id"], name: "index_exercise_records_on_rpe_exercise_id"
     t.index ["user_id"], name: "index_exercise_records_on_user_id"
   end
 
@@ -30,6 +34,8 @@ ActiveRecord::Schema.define(version: 2021_10_02_092722) do
     t.string "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "exercise_record_id", null: false
+    t.index ["exercise_record_id"], name: "index_exercise_set_records_on_exercise_record_id"
   end
 
   create_table "one_rep_maxes", force: :cascade do |t|
@@ -99,7 +105,10 @@ ActiveRecord::Schema.define(version: 2021_10_02_092722) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "exercise_records", "percentage_one_rm_exercises"
+  add_foreign_key "exercise_records", "rpe_exercises"
   add_foreign_key "exercise_records", "users"
+  add_foreign_key "exercise_set_records", "exercise_records"
   add_foreign_key "one_rep_maxes", "users"
   add_foreign_key "percentage_one_rm_exercises", "program_weeks"
   add_foreign_key "program_weeks", "programs"
