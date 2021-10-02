@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_02_091413) do
+ActiveRecord::Schema.define(version: 2021_10_02_091641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2021_10_02_091413) do
     t.string "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_exercise_records_on_user_id"
   end
 
   create_table "exercise_set_records", force: :cascade do |t|
@@ -91,6 +93,7 @@ ActiveRecord::Schema.define(version: 2021_10_02_091413) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "exercise_records", "users"
   add_foreign_key "one_rep_maxes", "users"
   add_foreign_key "programs", "users"
 end
