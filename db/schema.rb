@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_02_091641) do
+ActiveRecord::Schema.define(version: 2021_10_02_091917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2021_10_02_091641) do
   create_table "program_weeks", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "program_id", null: false
+    t.index ["program_id"], name: "index_program_weeks_on_program_id"
   end
 
   create_table "programs", force: :cascade do |t|
@@ -95,5 +97,6 @@ ActiveRecord::Schema.define(version: 2021_10_02_091641) do
 
   add_foreign_key "exercise_records", "users"
   add_foreign_key "one_rep_maxes", "users"
+  add_foreign_key "program_weeks", "programs"
   add_foreign_key "programs", "users"
 end
