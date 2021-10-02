@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_02_093706) do
+ActiveRecord::Schema.define(version: 2021_10_02_111010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 2021_10_02_093706) do
     t.integer "percentage_one_rm"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "program_week_id", null: false
-    t.index ["program_week_id"], name: "index_percentage_one_rm_exercises_on_program_week_id"
+    t.bigint "workout_id", null: false
+    t.index ["workout_id"], name: "index_percentage_one_rm_exercises_on_workout_id"
   end
 
   create_table "program_weeks", force: :cascade do |t|
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 2021_10_02_093706) do
     t.integer "rpe"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "program_week_id", null: false
-    t.index ["program_week_id"], name: "index_rpe_exercises_on_program_week_id"
+    t.bigint "workout_id", null: false
+    t.index ["workout_id"], name: "index_rpe_exercises_on_workout_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -103,6 +103,8 @@ ActiveRecord::Schema.define(version: 2021_10_02_093706) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "program_week_id", null: false
+    t.index ["program_week_id"], name: "index_workouts_on_program_week_id"
   end
 
   add_foreign_key "exercise_records", "percentage_one_rm_exercises"
@@ -110,8 +112,9 @@ ActiveRecord::Schema.define(version: 2021_10_02_093706) do
   add_foreign_key "exercise_records", "users"
   add_foreign_key "exercise_set_records", "exercise_records"
   add_foreign_key "one_rep_maxes", "users"
-  add_foreign_key "percentage_one_rm_exercises", "program_weeks"
+  add_foreign_key "percentage_one_rm_exercises", "workouts"
   add_foreign_key "program_weeks", "programs"
   add_foreign_key "programs", "users"
-  add_foreign_key "rpe_exercises", "program_weeks"
+  add_foreign_key "rpe_exercises", "workouts"
+  add_foreign_key "workouts", "program_weeks"
 end
