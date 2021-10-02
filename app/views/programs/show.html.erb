@@ -1,1 +1,7 @@
-<%= link_to "Back", programs_path, :class => 'navbar-link' %>
+<%= link_to "Back", programs_path, :class => 'navbar-link' %> | 
+<%= link_to "Create Week", new_program_program_week_path(@program), :class => 'navbar-link' %>
+<% @program.program_weeks.each do |program_week| %>
+  <p>
+    Week <%= program_week.number %>
+  </p>
+<% end %>

@@ -37,9 +37,9 @@ class ProgramsController < ApplicationController
     redirect_to programs_path
   end
 
-   private
+  private
 
-    def program_params
-      params.require(:program).permit(:name, :user)
-    end
+  def program_params
+    params.require(:program).permit(:name, :user)
+  end
 end

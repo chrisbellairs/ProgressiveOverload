@@ -1,0 +1,5 @@
+<%= link_to "Back", program_path(@program), :class => 'navbar-link' %>
+<%= simple_form_for @program_week do |f| %>
+  <%= f.input :number %>
+  <%= f.button :submit %>
+<% end %>
